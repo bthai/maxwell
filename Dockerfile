@@ -1,6 +1,6 @@
-FROM java:openjdk-7
+FROM java:8
 ENV MAXWELL_VERSION 1.10.5
-ENV KAFKA_VERSION 0.10.1.0
+ENV KAFKA_VERSION 0.11.0.0
 
 RUN apt-get update && apt-get -y upgrade
 
@@ -19,4 +19,4 @@ RUN mkdir /app \
 WORKDIR /app
 
 RUN echo "$MAXWELL_VERSION" > /REVISION
-CMD bin/maxwell --user=$MYSQL_USERNAME --password=$MYSQL_PASSWORD --host=$MYSQL_HOST --producer=kafka --kafka.bootstrap.servers=$KAFKA_HOST:$KAFKA_PORT $MAXWELL_OPTIONS
+CMD bin/maxwell
